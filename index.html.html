@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Дроппер болма! — интерактивті құқықтық тренажер</title>
+<style>
+:root{--bg:#f4f8fc;--card:#ffffff;--text:#16324a;--muted:#5d7286;--green:#1f9d76;--red:#d94b4b;--gold:#c99a32;--blue:#1f5f99;--navy:#173f66}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:
+linear-gradient(rgba(244,248,252,.96),rgba(244,248,252,.98)),
+repeating-linear-gradient(0deg,transparent,transparent 39px,#dce8f2 40px);
+color:var(--text)}
+.wrap{max-width:960px;margin:auto;padding:22px}.hero{text-align:center;padding:34px 16px;background:linear-gradient(135deg,#173f66,#2877b5);border-radius:0 0 30px 30px;color:white;box-shadow:0 12px 28px #163f6630}.logo{font-size:58px}h1{font-size:44px;margin:8px 0}h2{margin-top:4px;color:var(--navy)}
+.school-name{font-size:18px;font-weight:700;letter-spacing:.3px;margin-bottom:10px}.hero .lead{color:#e8f4ff}
+.lead{color:var(--muted);font-size:18px;line-height:1.6}.card{background:var(--card);border:1px solid #d9e5ef;border-radius:22px;padding:25px;margin:18px 0;box-shadow:0 10px 26px #173f6615}
+input{width:100%;padding:15px;border-radius:12px;border:1px solid #b8cad9;background:#f9fcff;color:#17324a;font-size:17px;margin:8px 0 16px}
+button{border:0;border-radius:13px;padding:14px 18px;font-size:16px;font-weight:700;cursor:pointer}.primary{background:var(--green);color:#052117}
+.answer{display:block;width:100%;text-align:left;background:#eef6fc;color:#17324a;border:1px solid #bcd4e6;margin:9px 0}.answer:hover{background:#dceefb}
+.hidden{display:none}.good{color:var(--green);font-weight:bold}.bad{color:var(--red);font-weight:bold}.progress{height:10px;background:#17344f;border-radius:10px;overflow:hidden}.bar{height:100%;background:var(--green)}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.mini{background:#eef6fc;padding:17px;border-radius:15px;border-left:5px solid var(--blue)}
+.cert{background:linear-gradient(135deg,#fffdf7,#ffffff);color:#17324a;border:10px double #c99a32;border-radius:14px;padding:48px 34px;text-align:center;margin-top:18px;box-shadow:0 12px 30px #173f6625;position:relative}
+.cert:before,.cert:after{content:"✦";position:absolute;color:#c99a32;font-size:30px}.cert:before{left:20px;top:18px}.cert:after{right:20px;top:18px}
+.cert h1{color:#173f66;letter-spacing:4px}.cert .name{font-size:31px;font-weight:bold;color:#173f66;border-bottom:2px solid #c99a32;display:inline-block;padding:7px 28px}.cert .score{font-size:25px;font-weight:bold;color:#1f5f99}
+.cert-school{font-size:18px;font-weight:700;color:#173f66;margin-bottom:8px}.seal{font-size:42px;margin-bottom:5px}
+@media print{body *{visibility:hidden}.cert,.cert *{visibility:visible}.cert{position:absolute;left:0;top:0;width:100%;border:9px double #777}.no-print{display:none!important}}
+footer{text-align:center;color:#8fa5ba;padding:25px}
+.savebox{margin:18px 0;padding:16px;border-radius:14px;background:#eef6fc;border:1px solid #c9ddeb}
+.save-ok{color:#1f7d61;font-weight:700}.save-warn{color:#a56b00;font-weight:700}
+</style>
+</head>
+<body><div class="wrap">
+<section id="intro" class="hero">
+<div class="school-name">🏫 Жұмабек Тәшенов атындағы №20 орта мектеп</div>
+<div class="logo">🛡️🎓💳</div><h1>ДРОППЕР БОЛМА!</h1>
+<p class="lead">Оқушылардың қаржылық және құқықтық сауаттылығын арттыруға арналған интерактивті тренажер</p>
+</section>
+
+<section id="registration" class="card">
+<h2>👤 Қатысушы туралы ақпарат</h2>
+<p class="lead">Алдымен мәліметтеріңді толтыр. Тест аяқталғаннан кейін аты-жөнің сертификатқа автоматты түрде жазылады.</p>
+<label>Аты-жөнің</label><input id="name" placeholder="Мысалы: Айдана Серікқызы">
+<label>Сыныбың</label><input id="grade" placeholder="Мысалы: 9 «А»">
+<label>Мектебің</label><input id="school" value="Жұмабек Тәшенов атындағы №20 орта мектеп">
+<button class="primary" onclick="showInfo()">ЖАЛҒАСТЫРУ →</button>
+<p id="regError" class="bad"></p>
+</section>
+
+<section id="information" class="hidden">
+<div class="card"><h2>📚 Дроппер деген кім?</h2>
+<p class="lead"><b>Дроппер</b> — алаяқтық жолмен алынған немесе күмәнді қаражатты қабылдау, аудару не қолма-қол ақшаға айналдыру үшін өзінің банк картасын, шотын немесе деректерін пайдалануға беретін адам. Кейде жасөспірім мұның қылмыстық схема болуы мүмкін екенін түсінбей, «оңай ақша» ұсынысына келісуі ықтимал.</p>
+<div class="info-grid">
+<div class="mini"><b>⚠️ Қауіпті ұсыныс</b><p>«Картаңды жалға бер», «ақшаны қабылдап, ары қарай жібер», «комиссия өзіңе қалады».</p></div>
+<div class="mini"><b>🔐 Құпия деректер</b><p>PIN, CVV, SMS-код, банк қосымшасының құпиясөзі бөтен адамға берілмеуі тиіс.</p></div>
+<div class="mini"><b>💬 Қауіпті арналар</b><p>Күмәнді ұсыныстар мессенджерлерде, әлеуметтік желілерде және жалған жұмыс хабарландыруларында кездесуі мүмкін.</p></div>
+<div class="mini"><b>🧭 Дұрыс әрекет</b><p>Келіспе, ақша аударма, дәлелді сақта, сенімді ересекке және қажет болса банкке хабарла.</p></div>
+</div></div>
+<div class="card"><h2>🧠 Есте сақта!</h2>
+<p class="lead">«Мен тек картамды бердім» немесе «ақшаны бір рет қана аудардым» деген жағдайдың өзі қауіпсіз дегенді білдірмейді. Банк шотың мен картаң — сенің жеке қаржылық құралың.</p>
+<button class="primary" onclick="startQuiz()">АҚПАРАТПЕН ТАНЫСТЫМ — ТЕСТТІ БАСТАУ</button></div>
+</section>
+
+<section id="quiz" class="card hidden">
+<div class="progress"><div id="bar" class="bar" style="width:0"></div></div>
+<p id="counter" class="lead"></p><h2 id="question"></h2><div id="answers"></div>
+<p id="feedback" class="lead"></p><button id="next" class="primary hidden" onclick="nextQuestion()">КЕЛЕСІ →</button>
+</section>
+
+<section id="result" class="card hidden">
+<h2>🏆 Тест аяқталды!</h2><h1 id="score"></h1><p id="level" class="lead"></p>
+<div class="savebox"><div id="saveStatus" class="save-warn">⏳ Нәтиже мұғалімнің кестесіне жіберілуде...</div></div>
+<button class="primary" onclick="showCertificate()">СЕРТИФИКАТТЫ АШУ →</button>
+</section>
+
+<section id="certificateSection" class="hidden">
+<div id="certificate" class="cert">
+<div class="seal">🏫</div>
+<div class="cert-school">Жұмабек Тәшенов атындағы №20 орта мектеп</div>
+<h1>СЕРТИФИКАТ</h1>
+<p>Осы сертификат</p><div id="certName" class="name"></div>
+<p><b>«ДРОППЕР БОЛМА!»</b><br>интерактивті құқықтық тренажерін сәтті аяқтап,<br>қаржылық-құқықтық сауаттылығын көрсеткені үшін беріледі.</p>
+<p id="certSchool"></p><p id="certScore" class="score"></p><p id="certLevel"></p>
+<p id="certDate"></p><hr style="border:0;border-top:1px solid #d8c58b;margin:24px 0">
+<p><b>Қаржылық қауіпсіздік — өз қолыңда!</b></p>
+</div>
+<div class="no-print" style="text-align:center;margin:18px"><button class="primary" onclick="window.print()">🖨️ СЕРТИФИКАТТЫ БАСЫП ШЫҒАРУ / PDF</button></div>
+</section>
+<footer>© Жұмабек Тәшенов атындағы №20 орта мектеп • «Дроппер болма!»</footer>
+</div>
+<script>
+const qs=[
+["Telegram-да бейтаныс адам: «Картаңа ақша түсіреміз. Басқа шотқа жіберсең, 20 000 ₸ өзіңе қалады» деді. Не істейсің?",["Келісемін","Алдымен төлемін сұраймын","Бас тартамын және деректерімді бермеймін"],2],
+["Танысың банк картаңды бір күнге «жалға» сұрады.",["Картамды беремін","Себебін сұраймын, бірақ картамды бермеймін","PIN-кодсыз бере саламын"],1],
+["Біреу SMS арқылы келген банк растау кодын сұрады.",["Жіберемін","Ешкімге бермеймін","Тек таныс адам болса беремін"],1],
+["«Үйден жұмыс: ақша қабылдап, басқа шотқа жібересің» деген хабарландыру көрдің.",["Келісемін","Күмәнді схема болуы мүмкін деп бас тартамын","Аз сомамен байқап көремін"],1],
+["Шотыңа күтпеген жерден бейтаныс ақша түсті.",["Жұмсаймын","Өз бетімше көрсетілген картаға жіберемін","Банкпен байланысып, жағдайды анықтаймын"],2],
+["Бейтаныс адам банк қосымшаңның логині мен құпиясөзін сұрады.",["Екеуін де беремін","Тек логинді беремін","Ешқайсысын бермеймін"],2],
+["Досың: «Бәрі осылай ақша табады, қорықпа» дейді.",["Сенемін","Күмәнді схемаға қатыспаймын","Бір рет байқап көремін"],1],
+["«Жұмыс беруші» сенен өз атыңа жаңа банк картасын ашып беруді сұрады.",["Ашып беремін","Бас тартамын","Ақысын көп берсе келісемін"],1],
+["Күмәнді ұсыныстың чаттағы хаттары сақтаулы.",["Өшіремін","Скриншот жасап, дәлелдерді сақтаймын","Тек достарыма жіберемін"],1],
+["Қауіпті қаржылық ұсынысқа тап болсаң, ең дұрыс алғашқы әрекеттердің бірі қайсы?",["Жасыру","Сенімді ересекке айтып, қажет болса банкке хабарласу","Ақшаны тез шешіп алу"],1]
+];
+// Google Apps Script веб-қосымшасының URL мекенжайын төмендегі тырнақшаның ішіне қойыңыз.
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzjPbrY0pbCmgh6fWDPnFElSVWU_iHo4K9QGArG0vv7h401MP0RaZKUvXqCsuKH6zqY/exec";
+let i=0,score=0,locked=false,person={}, answerLog=[];
+function showInfo(){
+ let n=document.getElementById("name").value.trim(),g=document.getElementById("grade").value.trim(),s=document.getElementById("school").value.trim();
+ if(!n||!g||!s){document.getElementById("regError").textContent="Барлық жолды толтырыңыз.";return}
+ person={name:n,grade:g,school:s};document.getElementById("registration").classList.add("hidden");document.getElementById("information").classList.remove("hidden");window.scrollTo(0,0)
+}
+function startQuiz(){answerLog=[];document.getElementById("information").classList.add("hidden");document.getElementById("quiz").classList.remove("hidden");render();window.scrollTo(0,0)}
+function render(){
+ locked=false;document.getElementById("next").classList.add("hidden");document.getElementById("feedback").innerHTML="";
+ document.getElementById("counter").textContent=`${person.name} • ${i+1}/${qs.length} сұрақ`;
+ document.getElementById("bar").style.width=`${i/qs.length*100}%`;document.getElementById("question").textContent=qs[i][0];
+ let a=document.getElementById("answers");a.innerHTML="";
+ qs[i][1].forEach((t,n)=>{let b=document.createElement("button");b.className="answer";b.textContent=t;b.onclick=()=>choose(n);a.appendChild(b)})
+}
+function choose(n){
+ if(locked)return;locked=true;
+ const correct=n===qs[i][2];
+ answerLog[i]=correct?1:0;
+ if(correct){score+=10;document.getElementById("feedback").innerHTML='<span class="good">✅ Дұрыс! +10 балл. Қауіпсіз шешім таңдадың.</span>'}
+ else{document.getElementById("feedback").innerHTML='<span class="bad">❌ Бұл қауіпті шешім. Банк картаңды және құпия деректеріңді бөтен адамға берме, күмәнді ақша аударымына қатыспа.</span>'}
+ document.getElementById("next").classList.remove("hidden")
+}
+function nextQuestion(){i++;if(i<qs.length)render();else finish()}
+function finish(){
+ document.getElementById("quiz").classList.add("hidden");
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("score").textContent=`${score}/100 балл`;
+ document.getElementById("level").textContent=getLevel();
+ sendResultToTeacher();
+ window.scrollTo(0,0)
+}
+async function sendResultToTeacher(){
+ const status=document.getElementById("saveStatus");
+ if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")){
+   status.className="save-warn";
+   status.textContent="⚙️ Google Sheets байланысы әлі бапталмаған.";
+   return;
+ }
+ const payload={
+   name:person.name,
+   grade:person.grade,
+   school:person.school,
+   score:score,
+   level:getLevel().replace(/^[^ ]+ /,""),
+   answers:answerLog.join(",")
+ };
+ try{
+   await fetch(GOOGLE_SCRIPT_URL,{
+     method:"POST",
+     mode:"no-cors",
+     headers:{"Content-Type":"text/plain;charset=utf-8"},
+     body:JSON.stringify(payload)
+   });
+   status.className="save-ok";
+   status.textContent="✅ Нәтиже мұғалімнің Google Sheets кестесіне жіберілді.";
+ }catch(e){
+   status.className="save-warn";
+   status.textContent="⚠️ Нәтижені жіберу мүмкін болмады. Интернет байланысын тексеріңіз.";
+ }
+}
+function getLevel(){return score>=80?"🟢 Құқықтық қауіпсіздік деңгейі: ЖОҒАРЫ":score>=50?"🟡 Құқықтық қауіпсіздік деңгейі: ОРТАША":"🔴 Құқықтық қауіпсіздік деңгейі: НАЗАР АУДАРУ ҚАЖЕТ"}
+function showCertificate(){
+ document.getElementById("result").classList.add("hidden");document.getElementById("certificateSection").classList.remove("hidden");
+ document.getElementById("certName").textContent=person.name;document.getElementById("certSchool").textContent=`${person.school} • ${person.grade}`;
+ document.getElementById("certScore").textContent=`Нәтижесі: ${score}/100 балл`;document.getElementById("certLevel").textContent=getLevel();
+ document.getElementById("certDate").textContent="Күні: "+new Date().toLocaleDateString("kk-KZ");window.scrollTo(0,0)
+}
+</script></body></html>
